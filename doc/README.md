@@ -2,17 +2,19 @@
 
 The Katana project is a Wi-Fi penetration software project that uses the evil-twin attack method for phishing Wi-Fi passwords. The project requires a single ESP32 and a laptop/computer to facilitate the evil-twin attack. In theory any devices that can read and write serial commands to the ESP32 device can facilitate evil-twin attack. This includes any devices with operating systems like Android, IOS, Windows, Linux. It can also work with Arduino assumming that it has the necessary algorithm and serial codes for converting user input into serial commands that can be executed by ESP32 as well as reading serial events from ESP32.
 
-To make the project simple, I use a Windows operating system to demonstrate the attack. A python script called ESP32 Python Interface is a command line interface that allows user to send commands to ESP32. It is a high level command line interface that fully automates the attack and provides hint on what commands to send.
+## Disclaimer
+
+Usage of all tools, procedure, information and instruction on this project for attacking targets without prior mutual consent is illegal. It is the end user’s responsibility to obey all applicable local, state, and federal laws. I assume no liability and are not responsible for any misuse or damage caused by this project or software.
 
 ## Use Case Diagram
 
-<img src="/images/Use-case.png" width=600 />
+![Katana](/doc/images/Use-case.png)
 
 The use case diagram illustrates what a user can do to the system. This includes things like scanning for target access points, selecting target access points, launching phishing site and disconnecting connected clients from target access points.
 
 ## Workflow
 
-<img src="/images/Workflow.png" width=600 />
+![Katana](/doc/images/Workflow.png)
 
 The workflow illustrates the recommended flow of the attack using flowchart. It is a high level overview of how an evil-twin attack should be conducted. Although not every attack is guranteed to follow the workflow because an attack varies depending on the situation such as the strength of the Wi-Fi signal, the behaviour of the client target and human error.
 
@@ -139,7 +141,3 @@ Different possible expected event output from ESP32
 | PMKID       | frame_output.c          | 1.MSG_1                                                                     | 1.PMKID of target access point                                                                                                                                                                                                     |
 | MIC         | frame_output.c          | 1.MSG_1 2.MSG_2                                                             | 1.Mac address of target access point, mac address of station and anonce 2.Key data including snonce, MIC and etc.                                                                                                                  |
 | WEB         | web_server.c            | 1.POST_PSK 2.POST_INVALID_PSK 3.GET_ROOT 4.SERVER_STOPPED 5.SERVER_STARTED  | 1.Password entered by the client 2.The password entered by the client is null or not a string 3.Client request web client 4.The web server component stopped 5.The web server component started                                    |
-
-## Disclaimer
-
-Usage of all tools on this project for attacking targets without prior mutual consent is illegal. It is the end user’s responsibility to obey all applicable local, state, and federal laws. I assume no liability and are not responsible for any misuse or damage caused by this project or software.
