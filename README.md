@@ -2,9 +2,13 @@
 
 The Katana project is a Wi-Fi penetration software project that uses the evil-twin attack method for phishing Wi-Fi passwords. The project requires a single ESP32 and a laptop/computer to facilitate the evil-twin attack. In theory any devices that can read and write serial commands to the ESP32 device can facilitate evil-twin attack.
 
+![Katana](/doc/images/Katana.png)
+
 This is an old project of mine that I would like to share, feel free to use every asset in this project. **I would not be able to actively contribute to this project because I will be focusing on my new niche hobby (Data Science and Artificial Intelligence)**. If you want to contribute, I suggest to fork this repository and I will put the link of your repository here. For questions on how the system works, you can contact me at telegram: @hexx2
 
-![Katana](/doc/images/Katana.png)
+## Disclaimer
+
+Usage of all tools, procedure, information and instruction on this project for attacking targets without prior mutual consent is illegal. It is the end user’s responsibility to obey all applicable local, state, and federal laws. I assume no liability and are not responsible for any misuse or damage caused by this project or software.
 
 ## Installation and setup
 
@@ -55,7 +59,3 @@ It is important to follow this step-by-step procedure:
    - Once the client has connected to our access point, we wait for the password to be entered
 
 The system is not guranteed to be perfect and bugs is inevitable. Incase an unknown state or event has happened, consider doing a system restart on ESP32 by running the command `restart` or you can just press the "EN" button on the ESP32 board. Restarting the system would not take long and doing a system restart for every attack clears memory state and refreshes the internal state of the system.
-
-## Disclaimer
-
-Usage of all tools on this project for attacking targets without prior mutual consent is illegal. It is the end user’s responsibility to obey all applicable local, state, and federal laws. I assume no liability and are not responsible for any misuse or damage caused by this project or software.
